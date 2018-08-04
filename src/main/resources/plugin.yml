@@ -1,0 +1,6 @@
+name: StackSpawners
+version: ${project.version}
+main: ml.bjorn.stackspawners.StackSpawners
+softdepend: [HolographicDisplays]
+authors: [Bjornskjald]
+description: Stack spawners.

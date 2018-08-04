@@ -1,0 +1,6 @@
+name: StackSpawners
+version: 1.0-SNAPSHOT
+main: ml.bjorn.stackspawners.StackSpawners
+softdepend: [HolographicDisplays]
+authors: [Bjornskjald]
+description: Stack spawners.
