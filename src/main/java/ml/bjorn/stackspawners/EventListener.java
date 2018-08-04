@@ -2,10 +2,12 @@ package ml.bjorn.stackspawners;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -25,6 +27,7 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
         Block blockAgainst = event.getBlockAgainst();
         Block blockPlaced = event.getBlock();
 
@@ -69,10 +72,7 @@ public class EventListener implements Listener {
 
                 // Change the actual mob spawn count
                 int scount = count * 4;
-                plugin.getServer().dispatchCommand(
-                        plugin.getServer().getConsoleSender(),
-                        "blockdata " + commandLocation + " {MaxNearbyEntities:" + scount + "s,SpawnCount:" + scount + "s}"
-                );
+                run(player, "blockdata " + commandLocation + " {MaxNearbyEntities:" + scount + "s,SpawnCount:" + scount + "s}");
             } else {
                 // Add the count value to the config
                 config.set(configLocation, 2);
@@ -83,10 +83,7 @@ public class EventListener implements Listener {
                 hologram.appendTextLine("2x");
 
                 // Change the actual mob spawn count
-                plugin.getServer().dispatchCommand(
-                        plugin.getServer().getConsoleSender(),
-                        "blockdata " + commandLocation + " {MaxNearbyEntities:8s,SpawnCount:8s}"
-                );
+                run(player, "blockdata " + commandLocation + " {MaxNearbyEntities:8s,SpawnCount:8s}");
             }
         }
     }
@@ -111,6 +108,17 @@ public class EventListener implements Listener {
                     .collect(Collectors.toList());
 
             if (list.size() > 0) list.get(0).delete();
+        }
+    }
+
+    private void run(Player player, String command) {
+        try {
+            player.setOp(true);
+            plugin.getServer().dispatchCommand(player, command);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            player.setOp(false);
         }
     }
 }
