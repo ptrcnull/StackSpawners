@@ -4,7 +4,7 @@
   <groupId>ml.bjorn</groupId>
   <artifactId>stackspawners</artifactId>
   <name>StackSpawners</name>
-  <version>1.1.2-SNAPSHOT</version>
+  <version>1.1.3-SNAPSHOT</version>
   <description>Stack spawners.</description>
   <build>
     <defaultGoal>clean package</defaultGoal>

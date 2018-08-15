@@ -42,19 +42,22 @@ public final class StackSpawners extends JavaPlugin {
         }
 
         if (!config.isSet("world")) config.set("world", getServer().getWorlds().get(0).getName());
+        saveConfig();
+        String worldName = config.getString("world");
+
+        World world = getServer().getWorlds()
+            .stream().filter(w -> w.getName().equals(worldName)).collect(Collectors.toList())
+            .get(0);
 
         for (String key : config.getKeys(false)) {
+            if (key.equals("world")) continue;
+
             int count = config.getInt(key);
 
             String[] locArr = key.split(",");
             double x = Double.parseDouble(locArr[0]);
             double y = Double.parseDouble(locArr[1]);
             double z = Double.parseDouble(locArr[2]);
-
-            String worldName = config.getString("world");
-            World world = getServer().getWorlds()
-                .stream().filter(w -> w.getName().equals(worldName)).collect(Collectors.toList())
-                .get(0);
 
             Location loc = new Location(world, x, y, z);
 
