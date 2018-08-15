@@ -13,8 +13,11 @@ import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.stream.Collectors;
 
 public final class StackSpawners extends JavaPlugin {
 
@@ -37,6 +40,9 @@ public final class StackSpawners extends JavaPlugin {
             this.setEnabled(false);
             return;
         }
+
+        if (!config.isSet("world")) config.set("world", getServer().getWorlds().get(0).getName());
+
         for (String key : config.getKeys(false)) {
             int count = config.getInt(key);
 
@@ -45,7 +51,12 @@ public final class StackSpawners extends JavaPlugin {
             double y = Double.parseDouble(locArr[1]);
             double z = Double.parseDouble(locArr[2]);
 
-            Location loc = new Location(getServer().getWorlds().get(0), x, y, z);
+            String worldName = config.getString("world");
+            World world = getServer().getWorlds()
+                .stream().filter(w -> w.getName().equals(worldName)).collect(Collectors.toList())
+                .get(0);
+
+            Location loc = new Location(world, x, y, z);
 
             if (loc.getBlock().getType() != Material.MOB_SPAWNER) {
                 config.set(key, null);
