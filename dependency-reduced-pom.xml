@@ -4,7 +4,7 @@
   <groupId>ml.bjorn</groupId>
   <artifactId>stackspawners</artifactId>
   <name>StackSpawners</name>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <description>Stack spawners.</description>
   <build>
     <defaultGoal>clean package</defaultGoal>
@@ -48,6 +48,10 @@
     <repository>
       <id>sonatype</id>
       <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>dmulloy2-repo</id>
+      <url>http://repo.dmulloy2.net/nexus/repository/public/</url>
     </repository>
   </repositories>
   <dependencies>

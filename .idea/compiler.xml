@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="StackSpawners" />
+        <module name="stackspawners" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="StackSpawners" target="1.8" />
+      <module name="stackspawners" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
