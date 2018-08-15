@@ -10,9 +10,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class EventListener implements Listener {
     private SpawnerManager manager = new SpawnerManager();
 

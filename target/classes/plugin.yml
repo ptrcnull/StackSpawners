@@ -1,6 +1,0 @@
-name: StackSpawners
-version: 1.1.0-SNAPSHOT
-main: ml.bjorn.stackspawners.StackSpawners
-softdepend: [HolographicDisplays, ProtocolLib]
-authors: [Bjornskjald]
-description: Stack spawners.

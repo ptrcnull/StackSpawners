@@ -15,7 +15,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.simple.parser.JSONParser;
 
 public final class StackSpawners extends JavaPlugin {
 
@@ -67,11 +66,8 @@ public final class StackSpawners extends JavaPlugin {
                         StructureModifier<WrappedChatComponent> chatComponents = packet.getChatComponents();
                         String message = chatComponents.read(0).getJson();
 
-                        this.getPlugin().getLogger().severe(message);
-
                         if (message.contains("MaxNearbyEntities")) {
                             event.setCancelled(true);
-                            event.getPlayer().sendMessage("Spawner zmodyfikowany!");
                         }
                     }
                 }

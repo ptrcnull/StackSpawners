@@ -13,7 +13,6 @@ class Utils {
     static String locToStr(Location loc, String s) { return loc.getBlockX() + s + loc.getBlockY() + s + loc.getBlockZ(); }
 
     private static void run(Player player, String command) {
-        StackSpawners.plugin.getLogger().severe(command);
         boolean wasOp = player.isOp();
         try { player.setOp(true); StackSpawners.plugin.getServer().dispatchCommand(player, command); }
         catch(Exception e) { e.printStackTrace(); }
